@@ -1,0 +1,45 @@
+{{- if .Values.prometheus.serviceMonitor.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ template "syseleven-exporter.fullname" . }}
+  labels:
+    {{- include "syseleven-exporter.labels" . | nindent 4 }}
+  {{- if .Values.prometheus.serviceMonitor.additionalLabels }}
+{{ toYaml .Values.prometheus.serviceMonitor.additionalLabels | indent 4 }}
+  {{- end }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "syseleven-exporter.selectorLabels" . | nindent 6 }}
+  {{- with .Values.prometheus.serviceMonitor.jobLabel }}
+  jobLabel: {{ . | quote}}
+  {{- end }}
+  {{- with .Values.prometheus.serviceMonitor.targetLabels }}
+  targetLabels:
+{{ toYaml . | trim | indent 4 -}}
+  {{- end }}
+  {{- with .Values.prometheus.serviceMonitor.podTargetLabels }}
+  podTargetLabels:
+{{ toYaml . | trim | indent 4 -}}
+  {{- end }}
+  endpoints:
+    - path: /metrics
+      port: {{ .Values.service.name }}
+  {{- if .Values.prometheus.serviceMonitor.interval }}
+      interval: {{ .Values.prometheus.serviceMonitor.interval }}
+  {{- end }}
+  {{- if .Values.prometheus.serviceMonitor.scrapeTimeout }}
+      scrapeTimeout: {{ .Values.prometheus.serviceMonitor.scrapeTimeout }}
+  {{- end }}
+  {{- if .Values.prometheus.serviceMonitor.metricRelabelings }}
+      metricRelabelings: {{ toYaml .Values.prometheus.serviceMonitor.metricRelabelings | nindent 8 }}
+  {{- end }}
+  {{- if .Values.prometheus.serviceMonitor.namespace }}
+  namespaceSelector:
+    matchNames:
+    {{- range .Values.prometheus.serviceMonitor.namespace }}
+    - {{ . }}
+    {{- end }}
+  {{- end }}
+{{- end }}
