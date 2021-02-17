@@ -36,4 +36,11 @@ prometheus.serviceMonitor.enabled
 prometheus.serviceMonitor.interval 
 ```
 
+The default Namespace for the ServiceMonitor is the Helm Release Namespace.
+If you need the ServiceMonitor in an other namespace, you have to specify the `prometheus.serviceMonitor.namespace`.
+
+```bash
+prometheus.serviceMonitor.namespace
+```
+
 To see the full list of all options look at [Values.yaml](charts/syseleven-exporter-chart/values.yaml).
