@@ -21,7 +21,7 @@ prometheus:
   serviceMonitor:
     enabled: false
     interval: 10m
-    namespace: []
+    namespace:
     additionalLabels: {}
     jobLabel: ""
     targetLabels: []
