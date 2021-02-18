@@ -1,6 +1,8 @@
 # SysEleven Exporter Helm-Chart
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Release Charts](https://github.com/vfm/syseleven-exporter-chart/workflows/Release%20Charts/badge.svg?branch=main)
+![Badge](https://img.shields.io/badge/made%20with%20%E2%9D%A4%20by-vfm-002C5B)
+
 
 A Helm Chart to deploy the greate [SysEleven Exporter](https://github.com/Staffbase/syseleven-exporter) in Kubernetes.
 
@@ -42,5 +44,9 @@ If you need the ServiceMonitor in an other namespace, you have to specify the `p
 ```bash
 prometheus.serviceMonitor.namespace
 ```
+
+#### Rules
+
+To use a default set of Prometheus Alertrules, you have to enable the `prometheus.rules.enabled` flag. Simliar to the ServiceMonitor, you can adjust the default Namespace with `prometheus.rules.namespace`.
 
 To see the full list of all options look at [Values.yaml](charts/syseleven-exporter-chart/values.yaml).
