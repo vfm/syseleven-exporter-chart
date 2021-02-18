@@ -45,4 +45,8 @@ If you need the ServiceMonitor in an other namespace, you have to specify the `p
 prometheus.serviceMonitor.namespace
 ```
 
+#### Rules
+
+To use a default set of Prometheus Alertrules, you have to enable the `prometheus.rules.enabled` flag. Simliar to the ServiceMonitor, you can adjust the default Namespace with `prometheus.rules.namespace`.
+
 To see the full list of all options look at [Values.yaml](charts/syseleven-exporter-chart/values.yaml).

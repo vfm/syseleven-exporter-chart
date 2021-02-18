@@ -27,6 +27,9 @@ prometheus:
     targetLabels: []
     podTargetLabels: []
     metricRelabelings: []
+  rules:
+    enabled: false
+    namespace:
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
