@@ -30,7 +30,7 @@ prometheus:
   rules:
     enabled: false
     namespace:
-  dashboard:
+  dashboards:
     enabled: false
     namespace:
 
