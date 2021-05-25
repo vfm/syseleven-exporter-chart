@@ -1,0 +1,14 @@
+{{- if ( .Values.prometheus.dashboards.enabled ) }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "syseleven-exporter.fullname" . }}-quotas-dashboard
+  namespace: "{{ .Values.prometheus.dashboards.namespace | default .Release.Namespace }}"
+  labels:
+    grafana_dashboard: "1"
+    {{- include "syseleven-exporter.labels" . | nindent 4 }}
+data:
+  syseleven-exporter-quotas.json: |-
+    {{ .Files.Get "dashboards/syseleven-exporter-quotas.json" | nindent 4 }}
+{{- end }}
