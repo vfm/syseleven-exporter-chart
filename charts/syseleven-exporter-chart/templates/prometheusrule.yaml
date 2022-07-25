@@ -16,61 +16,70 @@ spec:
       labels:
         severity: critical
       annotations:
-        message: {{ "'{{ $value | humanize }}% of all Compute Cores in project {{ $labels.project }} in region {{ $labels.region }} are in use.'" }}
+        description: {{ "'{{ $value | humanize }}% of all Compute Cores in project {{ $labels.project }} in region {{ $labels.region }} are in use.'" }}
+        summary: "High usage of Compute Cores in project {{ $labels.project }} detected."
     - alert: SysElevenComputeInstances
       expr: sum((syseleven_compute_instances_used / syseleven_compute_instances_total) * 100) by(region, project) > 90
       for: 1m
       labels:
         severity: critical
       annotations:
-        message: {{ "'{{ $value | humanize }}% of all Compute Instances in project {{ $labels.project }} in region {{ $labels.region }} are in use.'" }}
+        description: {{ "'{{ $value | humanize }}% of all Compute Instances in project {{ $labels.project }} in region {{ $labels.region }} are in use.'" }}
+        summary: "Nearly all Compute Nodes in project {{ $labels.project }} are in use."
     - alert: SysElevenComputeRam
       expr: sum((syseleven_compute_ram_used_megabytes / syseleven_compute_ram_total_megabytes) * 100) by(region, project) > 90
       for: 1m
       labels:
         severity: critical
       annotations:
-        message: {{ "'{{ $value | humanize }}% of all Compute Ram in project {{ $labels.project }} in region {{ $labels.region }} is in use.'" }}
+        description: {{ "'{{ $value | humanize }}% of all Compute Ram in project {{ $labels.project }} in region {{ $labels.region }} is in use.'" }}
+        summary: "High memory consumption in project {{ $labels.project }}."
     - alert: SysElevenDnsZones
       expr: sum((syseleven_dns_zones_used / syseleven_dns_zones_total) * 100) by(region, project) > 90
       for: 1m
       labels:
         severity: critical
       annotations:
-        message: {{ "'{{ $value | humanize }}% of all DNS Zones in project {{ $labels.project }} in region {{ $labels.region }} are in use.'" }}
+        description: {{ "'{{ $value | humanize }}% of all DNS Zones in project {{ $labels.project }} in region {{ $labels.region }} are in use.'" }}
+        summary: "Nearly all DNS Zones in project {{ $labels.project }} are in use."
     - alert: SysElevenNetworkFloatingIps
       expr: sum((syseleven_network_floating_ips_used / syseleven_network_floating_ips_total) * 100) by(region, project) > 90
       for: 1m
       labels:
         severity: critical
       annotations:
-        message: {{ "'{{ $value | humanize }}% of all Network Floating IPs in project {{ $labels.project }} in region {{ $labels.region }} are in use.'" }}
+        description: {{ "'{{ $value | humanize }}% of all Network Floating IPs in project {{ $labels.project }} in region {{ $labels.region }} are in use.'" }}
+        summary: "Nearly all Network Floating IPs in project {{ $labels.project }} are in use."
     - alert: SysElevenNetworkLoadbalancers
       expr: sum((syseleven_network_loadbalancers_used / syseleven_network_loadbalancers_total) * 100) by(region, project) > 90
       for: 1m
       labels:
         severity: critical
       annotations:
-        message: {{ "'{{ $value | humanize }}% of all Network Loadbalancers in project {{ $labels.project }} in region {{ $labels.region }} are in use.'" }}
+        description: {{ "'{{ $value | humanize }}% of all Network Loadbalancers in project {{ $labels.project }} in region {{ $labels.region }} are in use.'" }}
+        summary: "Nearly all Network Loadbalancers in project {{ $labels.project }} are in use."
     - alert: SysElevenS3space
       expr: sum((syseleven_s3_space_used_bytes / syseleven_s3_space_total_bytes) * 100) by(region, project) > 90
       for: 1m
       labels:
         severity: critical
       annotations:
-        message: {{ "'{{ $value | humanize }}% of all S3 Space in project {{ $labels.project }} in region {{ $labels.region }} is in use.'" }}
+        description: {{ "'{{ $value | humanize }}% of all S3 Space in project {{ $labels.project }} in region {{ $labels.region }} is in use.'" }}
+        summary: "High S3 disk usage in project {{ $labels.project }}."
     - alert: SysElevenVolumeSpace
       expr: sum((syseleven_volume_space_used_gigabytes / syseleven_volume_space_total_gigabytes) * 100) by(region, project) > 90
       for: 1m
       labels:
         severity: critical
       annotations:
-        message: {{ "'{{ $value | humanize }}% of all Volume Space in project {{ $labels.project }} in region {{ $labels.region }} is in use.'" }}
+        description: {{ "'{{ $value | humanize }}% of all Volume Space in project {{ $labels.project }} in region {{ $labels.region }} is in use.'" }}
+        summary: "High usage of Volume Space in project {{ $labels.project }}."
     - alert: SysElevenVolumeVolumes
       expr: sum((syseleven_volume_volumes_used / syseleven_volume_volumes_total) * 100) by(region, project) > 90
       for: 1m
       labels:
         severity: critical
       annotations:
-        message: {{ "'{{ $value | humanize }}% of all Volumes in project {{ $labels.project }} in region {{ $labels.region }} are in use.'" }}
+        description: {{ "'{{ $value | humanize }}% of all Volumes in project {{ $labels.project }} in region {{ $labels.region }} are in use.'" }}
+        summary: "High usage of all Volumes in project {{ $labels.project }}."
 {{- end }}
