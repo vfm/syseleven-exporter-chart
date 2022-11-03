@@ -50,3 +50,10 @@ prometheus.serviceMonitor.namespace
 To use a default set of Prometheus Alertrules, you have to enable the `prometheus.rules.enabled` flag. Simliar to the ServiceMonitor, you can adjust the default Namespace with `prometheus.rules.namespace`.
 
 To see the full list of all options look at [Values.yaml](charts/syseleven-exporter-chart/values.yaml).
+
+
+#### Dashboard
+
+To use a default Grafana Dashboard, you have to enable the `prometheus.dashboard.enabled` flag. Simliar to the Rules, you can adjust the Namespace with `prometheus.dashboard.namespace`.
+
+To see the full list of all options look at [Values.yaml](charts/syseleven-exporter-chart/values.yaml).
