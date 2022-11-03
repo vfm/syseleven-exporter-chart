@@ -54,6 +54,6 @@ To see the full list of all options look at [Values.yaml](charts/syseleven-expor
 
 #### Dashboard
 
-To use a default Grafana Dashboard, you have to enable the `prometheus.dashboard.enabled` flag. Simliar to the Rules, you can adjust the Namespace with `prometheus.dashboard.namespace`.
+To use a default Grafana Dashboard, you have to enable the `prometheus.dashboards.enabled` flag. Simliar to the Rules, you can adjust the Namespace with `prometheus.dashboards.namespace`.
 
 To see the full list of all options look at [Values.yaml](charts/syseleven-exporter-chart/values.yaml).
