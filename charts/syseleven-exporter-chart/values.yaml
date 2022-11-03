@@ -8,7 +8,7 @@ image:
   repository: staffbace/syseleven-exporter
   pullPolicy: IfNotPresent
   tag:
-  
+
 service:
   labels: {}
   annotations: {}
@@ -26,7 +26,20 @@ prometheus:
     jobLabel: ""
     targetLabels: []
     podTargetLabels: []
+    # MetricRelabelConfigs to apply to samples after scraping, but before ingestion.
     metricRelabelings: []
+    # - action: keep
+    #   regex: 'kube_(daemonset|deployment|pod|namespace|node|statefulset).+'
+    #   sourceLabels: [__name__]
+
+    # RelabelConfigs to apply to samples before scraping.
+    relabelings: []
+    # - sourceLabels: [__meta_kubernetes_pod_node_name, bla]
+    #   separator: ;
+    #   regex: ^(.*)$
+    #   targetLabel: nodename
+    #   replacement: $1
+    #   action: replace
   rules:
     enabled: false
     namespace:
@@ -46,7 +59,7 @@ resources: {}
   #   cpu: 100m
   #   memory: 128Mi
 
-nodeSelector: 
+nodeSelector:
 
 tolerations: []
 

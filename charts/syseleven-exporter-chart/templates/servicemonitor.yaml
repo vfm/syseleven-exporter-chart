@@ -14,15 +14,15 @@ spec:
     matchLabels:
       {{- include "syseleven-exporter.selectorLabels" . | nindent 6 }}
   {{- with .Values.prometheus.serviceMonitor.jobLabel }}
-  jobLabel: {{ . | quote}}
+  jobLabel: {{ . | quote }}
   {{- end }}
   {{- with .Values.prometheus.serviceMonitor.targetLabels }}
   targetLabels:
-{{ toYaml . | trim | indent 4 -}}
+    {{ toYaml . | trim | indent 4 -}}
   {{- end }}
   {{- with .Values.prometheus.serviceMonitor.podTargetLabels }}
   podTargetLabels:
-{{ toYaml . | trim | indent 4 -}}
+    {{ toYaml . | trim | indent 4 -}}
   {{- end }}
   endpoints:
     - path: /metrics
@@ -34,7 +34,12 @@ spec:
       scrapeTimeout: {{ .Values.prometheus.serviceMonitor.scrapeTimeout }}
   {{- end }}
   {{- if .Values.prometheus.serviceMonitor.metricRelabelings }}
-      metricRelabelings: {{ toYaml .Values.prometheus.serviceMonitor.metricRelabelings | nindent 8 }}
+      metricRelabelings:
+      {{- toYaml .Values.prometheus.serviceMonitor.metricRelabelings | nindent 8 }}
+  {{- end }}
+  {{- if .Values.prometheus.serviceMonitor.relabelings }}
+      relabelings:
+      {{- toYaml .Values.prometheus.serviceMonitor.relabelings | nindent 8 }}
   {{- end }}
   namespaceSelector:
     matchNames:
