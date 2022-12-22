@@ -8,6 +8,10 @@ metadata:
   labels:
     grafana_dashboard: "1"
     {{- include "syseleven-exporter.labels" . | nindent 4 }}
+  {{- if ( .Values.prometheus.dashboards.folder ) }}
+  annotations:
+    k8s-sidecar-target-directory: /tmp/dashboards/{{ .Values.prometheus.dashboards.folder }}
+  {{- end }}
 data:
   syseleven-exporter-quotas.json: |-
     {{ .Files.Get "dashboards/syseleven-exporter-quotas.json" | nindent 4 }}
