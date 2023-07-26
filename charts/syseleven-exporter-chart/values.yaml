@@ -74,3 +74,6 @@ openstack:
   projectId: ""
   username: ""
   password: ""
+  # When existingSecret is set this chart will ignore the individual openstack values and use these provided in the secret
+  # The secret will need to include the three keys OS_USERNAME,OS_PASSWORD,OS_PROJECT_ID 
+  existingSecret: ""
