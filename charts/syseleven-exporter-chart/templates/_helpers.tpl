@@ -54,5 +54,9 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 Secret name for Openstack Credentials
 */}}
 {{- define "syseleven-exporter.secret" -}}
-    {{ template "syseleven-exporter.fullname" . }}
-{{- end -}}
+{{- if .Values.openstack.existingSecret -}}
+{{- .Values.openstack.existingSecret }}
+{{- else }}
+{{- template "syseleven-exporter.fullname" . }}
+{{- end }}
+{{- end }}
