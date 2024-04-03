@@ -1,3 +1,18 @@
+# Project Archive Notice
+
+As of 03.04.2023, this repository has been archived and is no longer actively maintained by vfm. We are pleased to inform you that the project has found a new home and will continue to be developed and maintained by syseleven.
+
+For the latest updates, contributions, issues, and community support, please refer to the new repository at the following URL:
+
+[https://github.com/syseleven/syseleven-exporter](https://github.com/syseleven/syseleven-exporter)
+
+Thank you for your support and understanding.
+
+– vfm-Team
+
+---
+
+
 # SysEleven Exporter Helm-Chart
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Release Charts](https://github.com/vfm/syseleven-exporter-chart/workflows/Release%20Charts/badge.svg?branch=main)
